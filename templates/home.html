@@ -1,0 +1,65 @@
+{% include 'layout.html' %}
+
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            선생님 화면입니다.
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">글쓰기과제 생성!</h5>
+            <p class="card-text">학생에게 내줄 글쓰기 과제 생성</p>
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">옵션</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for todo in todos %}
+                {% if todo.complete == False %}
+                <tr class="pointer">
+
+                    <td>{{loop.index}}</td>
+                    <td>{{todo.title}}</td>
+                    <td>
+                        <button onclick="window.location.href='complete/{{todo.id}}'"
+                                type="button" class="btn btn-success">완료</button>
+                        <button onclick="window.location.href='edit-todo/{{todo.id}}'"
+                                type="button" class="btn btn-info">
+                            수정
+                        </button>
+                    </td>
+                </tr>
+
+                {% else %}
+                <tr class="pointer alert alert-success">
+
+                    <td>{{loop.index}}</td>
+                    <td class="strike-through-td">{{todo.title}}</td>
+                    <td>
+                        <button onclick="window.location.href='complete/{{todo.id}}'"
+                                type="button" class="btn btn-success">진행
+                        </button>
+                        <button onclick="window.location.href='edit-todo/{{todo.id}}'"
+                                type="button" class="btn btn-info">
+                            수정
+                        </button>
+                    </td>
+                </tr>
+
+                {% endif %}
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+            <a href="add-todo" class="btn btn-primary">새로운 과제 생성!</a>
+        </div>
+    </div>
+</div>
+

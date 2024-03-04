@@ -1,0 +1,24 @@
+{% include 'layout.html' %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            과제고치기
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                <div class="form-group">
+                    <label>제목</label>
+                    <input type="text" class="form-control" name="title" value="{{todo.title}}" required>
+                </div>
+                <div class="form-group">
+                    <label>과제설명</label>
+                    <textarea name="description" class="form-control" rows="3" required>{{todo.description}}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">수정완료</button>
+                <button onclick="window.location.href='/todos/delete/{{todo.id}}'"
+                        type="button" class="btn btn-danger">삭제</button>
+            </form>
+        </div>
+    </div>
+</div>
